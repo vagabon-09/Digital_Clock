@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+       <ImageView
+           android:padding="@dimen/_10sdp"
+           android:id="@+id/imageView2"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:src="@drawable/sleep_white_512"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           app:tint="@color/black"
+           android:contentDescription="@string/how_to_use_sleep_mode" />
+
+       <TextView
+           android:layout_marginStart="@dimen/_10sdp"
+           android:layout_marginEnd="@dimen/_10sdp"
+           android:layout_marginTop="@dimen/_5sdp"
+           android:gravity="center"
+           android:textSize="@dimen/_20sdp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/request_sleep_mode"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

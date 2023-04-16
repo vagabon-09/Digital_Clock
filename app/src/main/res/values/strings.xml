@@ -21,4 +21,6 @@
     <string name="custom_theme">Custom Theme</string>
     <string name="save">save</string>
     <string name="sleep_mode">Sleep Mode</string>
+    <string name="request_sleep_mode">Please enable the option to use this feature</string>
+    <string name="how_to_use_sleep_mode">how to use sleep mode</string>
 </resources>

@@ -53,14 +53,13 @@ public class CustomiseActivity extends AppCompatActivity {
     }
 
     private void setSpinnerItem() {
-        String[] items = new String[]{"Default Theme", "Night Bat", "Orange Mango"};
+        String[] items = new String[]{"Classic Theme", "Light Leaf", "Night Pumpkin"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         binding.customThemeDialogId.setAdapter(adapter);
         binding.customThemeDialogId.setSelection(settings.get_theme(getApplicationContext(), "theme", "theme"));
     }
 
     private void onClick() {
-
 
         /*
          * If you click this button (back button)

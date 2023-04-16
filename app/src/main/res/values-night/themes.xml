@@ -20,5 +20,16 @@
         <item name="background">@color/black</item>
     </style>
 
+    <style name="orangeMode" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="tint">@color/text_color</item>
+        <item name="background">@color/black</item>
+    </style>
+
+    <style name="NightBat" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="tint">@color/text_color</item>
+        <item name="background">@color/black</item>
+    </style>
 
 </resources>

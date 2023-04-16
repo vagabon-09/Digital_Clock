@@ -195,6 +195,7 @@
                     android:id="@+id/customThemeDialogId"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:contentDescription="@string/am"
                     android:spinnerMode="dropdown"
                     tools:ignore="RtlSymmetry,TouchTargetSizeCheck" />
             </LinearLayout>
