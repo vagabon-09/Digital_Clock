@@ -2,6 +2,7 @@ package com.vagabon.digital.clock.com.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,12 +22,7 @@ public class CustomiseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         settings = new Settings();
-        switch (checkTheme()) {
-            case 0:
-                setTheme(R.style.customMode);
-            case 2:
-                setTheme(R.style.orangeMode);
-        }
+        setCustomTheme();
 
         super.onCreate(savedInstanceState);
         binding = ActivityCustomiseBinding.inflate(getLayoutInflater());
@@ -35,6 +31,15 @@ public class CustomiseActivity extends AppCompatActivity {
         setSpinnerItem();
         onClick();
 
+    }
+
+    private void setCustomTheme() {
+        Log.d("checkTheme", "setCustomTheme: " + checkTheme() + "");
+        if (checkTheme() == 0) {
+            setTheme(R.style.customMode);
+        } else if (checkTheme() == 2) {
+            setTheme(R.style.orangeMode);
+        }
     }
 
     private int checkTheme() {
@@ -59,18 +64,27 @@ public class CustomiseActivity extends AppCompatActivity {
          * and this button is used to set theme
          *
          */
+
+
         binding.customThemeDialogId.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // Get the selected item position
                 Log.d("Position", "onItemSelected: " + position + "");
                 settings.set_theme(getApplicationContext(), "theme", "theme", position);
+                onRestart();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 // Do nothing
             }
+        });
+
+        binding.saveButtonId.setOnClickListener(v -> {
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
         });
 
 
