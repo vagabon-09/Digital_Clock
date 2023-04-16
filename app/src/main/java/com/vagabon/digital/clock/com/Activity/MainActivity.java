@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.AudioManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -56,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         Log.d("checkTheme", "setCustomTheme: " + checkTheme() + "");
         if (checkTheme() == 0) {
             setTheme(R.style.customMode);
+        } else if (checkTheme() == 1) {
+            setTheme(R.style.NightBat);
         } else if (checkTheme() == 2) {
             setTheme(R.style.orangeMode);
         }
@@ -82,9 +83,9 @@ public class MainActivity extends AppCompatActivity {
         if (st.settings_check(getApplicationContext(), "setting", "focus")) {
             if (checkNight || checkNight2) {
                 makeUsersFocused();
-                binding.focusModeBtnId.setBackground(getDrawable(R.drawable.select_option_settings_night));
+                binding.sleepModeId.setBackground(getDrawable(R.drawable.select_option_settings_night));
             } else {
-                binding.focusModeBtnId.setBackground(getDrawable(R.drawable.select_option_settings_day));
+                binding.sleepModeId.setBackground(getDrawable(R.drawable.select_option_settings_day));
             }
         } else {
             makeUserNormal();
@@ -95,7 +96,8 @@ public class MainActivity extends AppCompatActivity {
          * we are checking, is the button clicked using SharedReference
          * if clicked then we are setting the the background of the view
          * this condition is for Block calls
-         * */
+         */
+
         if (st.settings_check(getApplicationContext(), "setting", "calls")) {
             if (checkNight || checkNight2) {
                 binding.blockCallViewBtnId.setBackground(getDrawable(R.drawable.select_option_settings_night));
@@ -189,18 +191,18 @@ public class MainActivity extends AppCompatActivity {
          * and makeUserFocused method make users focused on there work
          */
 
-        binding.focusModeBtnId.setOnClickListener(v -> {
+        binding.sleepModeId.setOnClickListener(v -> {
             if (st.settings_check(getApplicationContext(), "setting", "focus")) {
                 makeUserNormal();
                 st.settings_option(getApplicationContext(), "setting", "focus", false);
-                binding.focusModeBtnId.setBackground(getDrawable(R.drawable.settings_options_shape_normal));
+                binding.sleepModeId.setBackground(getDrawable(R.drawable.settings_options_shape_normal));
             } else {
                 st.settings_option(getApplicationContext(), "setting", "focus", true);
                 makeUsersFocused();
                 if (checkNight || checkNight2) {
-                    binding.focusModeBtnId.setBackground(getDrawable(R.drawable.select_option_settings_night));
+                    binding.sleepModeId.setBackground(getDrawable(R.drawable.select_option_settings_night));
                 } else {
-                    binding.focusModeBtnId.setBackground(getDrawable(R.drawable.select_option_settings_day));
+                    binding.sleepModeId.setBackground(getDrawable(R.drawable.select_option_settings_day));
                 }
             }
         });
@@ -268,12 +270,7 @@ public class MainActivity extends AppCompatActivity {
 //                }
 //            }
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    binding.notificationView.setBackground(getDrawable(R.drawable.settings_options_shape_normal));
-                }
-            }, 1000);
+            new Handler().postDelayed(() -> binding.notificationView.setBackground(getDrawable(R.drawable.settings_options_shape_normal)), 1000);
 
         });
 
@@ -305,12 +302,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 binding.customiseViewId.setBackground(getDrawable(R.drawable.select_option_settings_day));
             }
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    binding.customiseViewId.setBackground(getDrawable(R.drawable.settings_options_shape_normal));
-                }
-            }, 1000);
+            new Handler().postDelayed(() -> binding.customiseViewId.setBackground(getDrawable(R.drawable.settings_options_shape_normal)), 1000);
             Intent intent = new Intent(MainActivity.this, CustomiseActivity.class);
             startActivity(intent);
 
@@ -375,20 +367,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void nightMode() {
-        AppCompatDelegate
-                .setDefaultNightMode(
-                        AppCompatDelegate
-                                .MODE_NIGHT_YES);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
     }
 
     public void nightModeDisable() {
-        AppCompatDelegate
-                .setDefaultNightMode(
-                        AppCompatDelegate
-                                .MODE_NIGHT_NO);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
     }
 
-
+    @Override
+    protected void onResume() {
+        setCustomTheme();
+        super.onResume();
+    }
 }
 
 

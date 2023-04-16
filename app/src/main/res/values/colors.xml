@@ -7,16 +7,19 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    
-<!--    Custom colors for application-->
-<!--    light color -->
+
+    <!--    Custom colors for application-->
+    <!--    light color -->
     <color name="settings_background">#5A5252</color>
 
-<!--    Night mode colors-->
+    <!--    Night mode colors-->
     <color name="text_color">#3FFF0F</color>
     <color name="select_color">#2BAD0A</color>
     <color name="select_black">#FF000000</color>
 
-<!--    Orange Theme-->
-<color name="orange">#FF8A00</color>
+    <!--    Orange Theme-->
+    <color name="orange">#FF8A00</color>
+
+    <!--    Night bat -->
+    <color name="bat">#ff05bc</color>
 </resources>

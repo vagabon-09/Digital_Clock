@@ -138,14 +138,13 @@
             android:id="@+id/focusModeId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
-            app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
+            app:layout_constraintEnd_toStartOf="@+id/blockNotificationId"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/constraintLayout2">
+            app:layout_constraintTop_toTopOf="@+id/blockNotificationId">
 
             <View
-                android:id="@+id/focusModeBtnId"
+                android:id="@+id/sleepModeId"
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_70sdp"
                 android:background="@drawable/settings_options_shape_normal"
@@ -159,10 +158,10 @@
                 android:layout_width="@dimen/_45sdp"
                 android:layout_height="@dimen/_45sdp"
                 android:contentDescription="@string/focus_icon"
-                android:src="@drawable/focus_white_512"
+                android:src="@drawable/sleep_white_512"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/focusModeBtnId"
-                app:layout_constraintStart_toStartOf="@+id/focusModeBtnId"
+                app:layout_constraintEnd_toEndOf="@+id/sleepModeId"
+                app:layout_constraintStart_toStartOf="@+id/sleepModeId"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -171,13 +170,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:fontFamily="@font/exo2_light"
-                android:text="@string/focus_mode"
+                android:text="@string/sleep_mode"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_16sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/focusModeBtnId"
-                app:layout_constraintStart_toStartOf="@+id/focusModeBtnId"
-                app:layout_constraintTop_toBottomOf="@+id/focusModeBtnId" />
+                app:layout_constraintEnd_toEndOf="@+id/sleepModeId"
+                app:layout_constraintStart_toStartOf="@+id/sleepModeId"
+                app:layout_constraintTop_toBottomOf="@+id/sleepModeId" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -187,6 +186,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_70sdp"
+            android:clickable="false"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/focusModeId"
@@ -233,10 +234,10 @@
             android:id="@+id/blockNotificationId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_15sdp"
-            app:layout_constraintEnd_toEndOf="@+id/focusModeId"
-            app:layout_constraintStart_toStartOf="@+id/focusModeId"
-            app:layout_constraintTop_toBottomOf="@+id/focusModeId">
+            android:layout_marginTop="@dimen/_70sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/focusModeId"
+            app:layout_constraintTop_toTopOf="parent">
 
             <View
                 android:id="@+id/notificationView"
@@ -280,10 +281,10 @@
             android:id="@+id/customiseId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_15sdp"
-            app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
-            app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+            android:layout_marginTop="@dimen/_50sdp"
+            app:layout_constraintEnd_toEndOf="@+id/blockNotificationId"
+            app:layout_constraintStart_toEndOf="@+id/nightModeId"
+            app:layout_constraintTop_toBottomOf="@+id/blockNotificationId">
 
             <View
                 android:id="@+id/customiseViewId"
@@ -327,10 +328,10 @@
             android:id="@+id/nightModeId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_15sdp"
-            app:layout_constraintEnd_toEndOf="@+id/blockNotificationId"
-            app:layout_constraintStart_toStartOf="@+id/blockNotificationId"
-            app:layout_constraintTop_toBottomOf="@+id/blockNotificationId">
+            app:layout_constraintEnd_toStartOf="@+id/customiseId"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="@+id/focusModeId"
+            app:layout_constraintTop_toTopOf="@+id/customiseId">
 
             <View
                 android:id="@+id/nightViewId"

@@ -20,4 +20,5 @@
     <string name="background_color">Background Color</string>
     <string name="custom_theme">Custom Theme</string>
     <string name="save">save</string>
+    <string name="sleep_mode">Sleep Mode</string>
 </resources>

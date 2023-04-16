@@ -19,4 +19,6 @@
         <item name="tint">@color/text_color</item>
         <item name="background">@color/black</item>
     </style>
+
+
 </resources>

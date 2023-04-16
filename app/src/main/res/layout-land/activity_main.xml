@@ -8,7 +8,6 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/timerViewId"
-        style="@style/customMode"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible">
@@ -27,7 +26,6 @@
 
             <TextClock
                 android:id="@+id/hour_time_id"
-                style="@style/customMode"
                 android:layout_width="@dimen/_90sdp"
                 android:textSize="@dimen/_80sdp"
                 android:layout_height="wrap_content"
@@ -38,7 +36,6 @@
                 />
 
             <TextView
-                style="@style/customMode"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_70sdp"
                 android:layout_marginStart="@dimen/_10sdp"
@@ -49,7 +46,6 @@
 
             <TextClock
                 android:id="@+id/minute_time_id"
-                style="@style/customMode"
                 android:layout_height="wrap_content"
                 android:layout_width="@dimen/_90sdp"
                 android:textSize="@dimen/_80sdp"
@@ -60,7 +56,6 @@
                 />
 
             <TextView
-                style="@style/customMode"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_70sdp"
                 android:layout_marginStart="@dimen/_10sdp"
@@ -71,7 +66,6 @@
 
             <TextClock
                 android:id="@+id/second_time_id"
-                style="@style/customMode"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/digital"
@@ -98,7 +92,6 @@
             app:layout_constraintVertical_bias="0.361">
 
             <TextClock
-                style="@style/customMode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/digital"
@@ -107,7 +100,6 @@
                 android:textSize="@dimen/_25sdp" />
 
             <TextClock
-                style="@style/customMode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -121,7 +113,6 @@
 
         <TextClock
             android:id="@+id/textClock"
-            style="@style/customMode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/digital"
@@ -139,7 +130,6 @@
 
     <ImageView
         android:id="@+id/settingsBtnId"
-        style="@style/customMode"
         android:layout_width="@dimen/_25sdp"
         android:layout_height="@dimen/_25sdp"
         android:layout_alignParentEnd="true"
@@ -166,7 +156,7 @@
             app:layout_constraintTop_toTopOf="@+id/constraintLayout2">
 
             <View
-                android:id="@+id/focusModeBtnId"
+                android:id="@+id/sleepModeId"
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_70sdp"
                 android:background="@drawable/settings_options_shape_normal"
@@ -182,8 +172,8 @@
                 android:contentDescription="@string/focus_icon"
                 android:src="@drawable/focus_white_512"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/focusModeBtnId"
-                app:layout_constraintStart_toStartOf="@+id/focusModeBtnId"
+                app:layout_constraintEnd_toEndOf="@+id/sleepModeId"
+                app:layout_constraintStart_toStartOf="@+id/sleepModeId"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -196,9 +186,9 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_16sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/focusModeBtnId"
-                app:layout_constraintStart_toStartOf="@+id/focusModeBtnId"
-                app:layout_constraintTop_toBottomOf="@+id/focusModeBtnId" />
+                app:layout_constraintEnd_toEndOf="@+id/sleepModeId"
+                app:layout_constraintStart_toStartOf="@+id/sleepModeId"
+                app:layout_constraintTop_toBottomOf="@+id/sleepModeId" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

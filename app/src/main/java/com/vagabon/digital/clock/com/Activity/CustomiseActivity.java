@@ -3,6 +3,7 @@ package com.vagabon.digital.clock.com.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.vagabon.digital.clock.com.R;
 import com.vagabon.digital.clock.com.ReusableCode.Settings;
@@ -18,6 +20,7 @@ import com.vagabon.digital.clock.com.databinding.ActivityCustomiseBinding;
 public class CustomiseActivity extends AppCompatActivity {
     private ActivityCustomiseBinding binding;
     private Settings settings;
+    private int p;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class CustomiseActivity extends AppCompatActivity {
         binding = ActivityCustomiseBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        binding.saveButtonId.setBackgroundColor(Color.TRANSPARENT);
         setSpinnerItem();
         onClick();
 
@@ -37,6 +41,8 @@ public class CustomiseActivity extends AppCompatActivity {
         Log.d("checkTheme", "setCustomTheme: " + checkTheme() + "");
         if (checkTheme() == 0) {
             setTheme(R.style.customMode);
+        } else if (checkTheme() == 1) {
+            setTheme(R.style.NightBat);
         } else if (checkTheme() == 2) {
             setTheme(R.style.orangeMode);
         }
@@ -47,12 +53,15 @@ public class CustomiseActivity extends AppCompatActivity {
     }
 
     private void setSpinnerItem() {
-        String[] items = new String[]{"Default Theme", "Night Bat", "Orange Theme"};
+        String[] items = new String[]{"Default Theme", "Night Bat", "Orange Mango"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         binding.customThemeDialogId.setAdapter(adapter);
+        binding.customThemeDialogId.setSelection(settings.get_theme(getApplicationContext(), "theme", "theme"));
     }
 
     private void onClick() {
+
+
         /*
          * If you click this button (back button)
          * you will redirect to previous page
@@ -71,8 +80,7 @@ public class CustomiseActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // Get the selected item position
                 Log.d("Position", "onItemSelected: " + position + "");
-                settings.set_theme(getApplicationContext(), "theme", "theme", position);
-                onRestart();
+                p = position;
             }
 
             @Override
@@ -82,9 +90,11 @@ public class CustomiseActivity extends AppCompatActivity {
         });
 
         binding.saveButtonId.setOnClickListener(v -> {
-            Intent intent = getIntent();
-            finish();
+            settings.set_theme(getApplicationContext(), "theme", "theme", p);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
+            Toast.makeText(this, "Settings Saved", Toast.LENGTH_SHORT).show();
+            finish();
         });
 
 
