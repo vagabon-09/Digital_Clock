@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Digital Clock</string>
+    <string name="hour_time">00</string>
+    <string name="minute_time">00</string>
+    <string name="second_time">00</string>
+    <string name="gap_time">:</string>
+    <string name="month_date_year">Apr 17 2023</string>
+    <string name="am">AM</string>
+    <string name="focus_mode">Focus Mode</string>
+    <string name="block_call">Block Calls</string>
+    <string name="block_notification">Notifications</string>
+    <string name="customise">Customise</string>
+    <string name="night_mode">Night Mode</string>
+    <string name="settings_disc">This is a image button for settings</string>
+    <string name="focus_icon">This is focus mode icon</string>
+    <string name="back_button">back button</string>
+    <string name="title_customise">Customise</string>
+    <string name="text_color">Text Color</string>
+    <string name="select_color">Select Color</string>
+    <string name="background_color">Background Color</string>
+    <string name="custom_theme">Custom Theme</string>
+</resources>
