@@ -141,7 +141,7 @@
         android:layout_height="match_parent"
         android:alpha="1"
         android:background="#A8000000"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/focusModeId"
@@ -191,50 +191,52 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-        <!--            android:id="@+id/constraintLayout2"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:visibility="gone"-->
-        <!--            tools:layout_editor_absoluteX="503dp"-->
-        <!--            tools:layout_editor_absoluteY="19dp">-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <!--            <View-->
-        <!--                android:id="@+id/blockCallViewBtnId"-->
-        <!--                android:layout_width="@dimen/_80sdp"-->
-        <!--                android:layout_height="@dimen/_70sdp"-->
-        <!--                android:background="@drawable/settings_options_shape_normal"-->
-        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--                app:layout_constraintEnd_toEndOf="parent"-->
-        <!--                app:layout_constraintStart_toStartOf="parent"-->
-        <!--                app:layout_constraintTop_toTopOf="parent" />-->
+            <View
+                android:id="@+id/blockCallViewBtnId"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:background="@drawable/settings_options_shape_normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <!--            <ImageView-->
-        <!--                android:id="@+id/imageView3"-->
-        <!--                android:layout_width="@dimen/_45sdp"-->
-        <!--                android:layout_height="@dimen/_45sdp"-->
-        <!--                android:contentDescription="@string/block_call"-->
-        <!--                android:src="@drawable/block_call_white_512"-->
-        <!--                app:layout_constraintBottom_toBottomOf="@+id/blockCallViewBtnId"-->
-        <!--                app:layout_constraintEnd_toEndOf="@+id/blockCallViewBtnId"-->
-        <!--                app:layout_constraintStart_toStartOf="@+id/blockCallViewBtnId"-->
-        <!--                app:layout_constraintTop_toTopOf="@+id/blockCallViewBtnId" />-->
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:contentDescription="@string/block_call"
+                android:src="@drawable/block_call_white_512"
+                app:layout_constraintBottom_toBottomOf="@+id/blockCallViewBtnId"
+                app:layout_constraintEnd_toEndOf="@+id/blockCallViewBtnId"
+                app:layout_constraintStart_toStartOf="@+id/blockCallViewBtnId"
+                app:layout_constraintTop_toTopOf="@+id/blockCallViewBtnId" />
 
-        <!--            <TextView-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_marginTop="@dimen/_5sdp"-->
-        <!--                android:fontFamily="@font/exo2_light"-->
-        <!--                android:text="@string/block_call"-->
-        <!--                android:textColor="@color/white"-->
-        <!--                android:textSize="@dimen/_16sdp"-->
-        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--                app:layout_constraintEnd_toEndOf="@+id/blockCallViewBtnId"-->
-        <!--                app:layout_constraintStart_toStartOf="@+id/blockCallViewBtnId"-->
-        <!--                app:layout_constraintTop_toBottomOf="@+id/blockCallViewBtnId" />-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/exo2_light"
+                android:text="@string/block_call"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/blockCallViewBtnId"
+                app:layout_constraintStart_toStartOf="@+id/blockCallViewBtnId"
+                app:layout_constraintTop_toBottomOf="@+id/blockCallViewBtnId" />
 
 
-        <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/blockNotificationId"
