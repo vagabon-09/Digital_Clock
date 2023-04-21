@@ -11,6 +11,7 @@
     <!--    Custom colors for application-->
     <!--    light color -->
     <color name="settings_background">#5A5252</color>
+    <color name="blue">#0035D6</color>
 
     <!--    Night mode colors-->
     <color name="text_color">#3FFF0F</color>
