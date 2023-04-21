@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
@@ -198,7 +199,10 @@ public class MainActivity extends AppCompatActivity {
                 binding.sleepModeId.setBackground(getDrawable(R.drawable.settings_options_shape_normal));
             } else {
                 st.settings_option(getApplicationContext(), "setting", "focus", true);
-                makeUsersFocused();
+//                makeUsersFocused();
+                Dialog dialog = new Dialog(this);
+                dialog.setContentView(R.layout.sleep_mode_warning_dialog);
+                dialog.show();
                 if (checkNight || checkNight2) {
                     binding.sleepModeId.setBackground(getDrawable(R.drawable.select_option_settings_night));
                 } else {
