@@ -2,6 +2,7 @@ package com.vagabon.digital.clock.com.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -36,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         /*This function is only for text some required method*/
 //        disableNotification();
-
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        boolean b = notificationManager.isNotificationPolicyAccessGranted();
+        Log.d("notificationCheck", "onCreate: " + b + "");
 
         //Checking is night mode enable or not
         checkNight = isNight();
@@ -51,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         getConnect();
 
     }
+
 
     private void setCustomTheme() {
         Log.d("checkTheme", "setCustomTheme: " + checkTheme() + "");
@@ -80,17 +84,20 @@ public class MainActivity extends AppCompatActivity {
          * we are checking, is the button clicked using SharedReference
          * if clicked then we are setting the the background of the view
          * this condition is for Focus mode
-         * */
+         */
+
         if (st.settings_check(getApplicationContext(), "setting", "focus")) {
+
+            Log.d("FocusSettings", "setSettings: " + st.settings_check(getApplicationContext(), "setting", "focus") + "");
             if (checkNight || checkNight2) {
                 makeUsersFocused();
                 binding.sleepModeId.setBackground(getDrawable(R.drawable.select_option_settings_night));
             } else {
+                makeUsersFocused();
                 binding.sleepModeId.setBackground(getDrawable(R.drawable.select_option_settings_day));
             }
-        } else {
-            makeUserNormal();
-        }
+        }  //            makeUserNormal();
+
 
         /*
          * This condition is the part of the setting
@@ -114,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
          * if clicked then we are setting the the background of the view
          * this condition is for Block notification
          */
+
         if (st.settings_check(getApplicationContext(), "setting", "notification")) {
             if (checkNight || checkNight2) {
                 Log.d("IsNightMode", "setSettings: Yes Night Mode");
@@ -131,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
          * we are checking, is the button clicked using SharedReference
          * if clicked then we are setting the the background of the view
          * this condition is for Customise
+         * till now this option is not needed so it is now commented
          */
 
 //        if (st.settings_check(getApplicationContext(), "setting", "customise")) {
@@ -172,6 +181,7 @@ public class MainActivity extends AppCompatActivity {
         When clicked on setting button get visible the setting view
          and set alpha in timer view
          */
+
         binding.settingsBtnId.setOnClickListener(v -> {
             binding.settingViewId.setVisibility(View.VISIBLE);
             binding.timerViewId.setAlpha(0.2f);
@@ -193,16 +203,19 @@ public class MainActivity extends AppCompatActivity {
          */
 
         binding.sleepModeId.setOnClickListener(v -> {
-            if (st.settings_check(getApplicationContext(), "setting", "focus")) {
+            boolean check = st.settings_check(getApplicationContext(), "pop", "pop");
+            if (st.settings_check(getApplicationContext(), "setting", "focus") && check) {
                 makeUserNormal();
                 st.settings_option(getApplicationContext(), "setting", "focus", false);
                 binding.sleepModeId.setBackground(getDrawable(R.drawable.settings_options_shape_normal));
             } else {
-                st.settings_option(getApplicationContext(), "setting", "focus", true);
-//                makeUsersFocused();
-                Dialog dialog = new Dialog(this);
-                dialog.setContentView(R.layout.sleep_mode_warning_dialog);
-                dialog.show();
+
+                if (check) {
+                    st.settings_option(getApplicationContext(), "setting", "focus", true);
+                    makeUsersFocused();
+                } else {
+                    showWarning();
+                }
                 if (checkNight || checkNight2) {
                     binding.sleepModeId.setBackground(getDrawable(R.drawable.select_option_settings_night));
                 } else {
@@ -273,7 +286,6 @@ public class MainActivity extends AppCompatActivity {
 //                    binding.notificationView.setBackground(getDrawable(R.drawable.select_option_settings_day));
 //                }
 //            }
-
             new Handler().postDelayed(() -> binding.notificationView.setBackground(getDrawable(R.drawable.settings_options_shape_normal)), 1000);
 
         });
@@ -344,14 +356,29 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void showWarning() {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.sleep_mode_warning_dialog);
+        AppCompatButton button = dialog.findViewById(R.id.warningCheckedId);
+        button.setOnClickListener(v -> {
+            st.settings_option(getApplicationContext(), "pop", "pop", true);
+            makeUsersFocused();
+            dialog.dismiss();
+        });
+        dialog.setCancelable(false);
+        dialog.show();
+    }
+
     private void makeUsersFocused() {
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         if (!notificationManager.isNotificationPolicyAccessGranted()) {
+            Log.d("FocusSettings", "makeUsersFocused: " + "Yes inside....");
             Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
             startActivity(intent);
         } else {
             AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
             audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+            Log.d("FocusSettings", "makeUsersFocused: " + "outside....");
         }
         // Now below code is to hide call notification from the users
         hideNotification();
