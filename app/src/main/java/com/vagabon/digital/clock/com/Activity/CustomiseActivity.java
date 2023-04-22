@@ -45,6 +45,8 @@ public class CustomiseActivity extends AppCompatActivity {
             setTheme(R.style.NightBat);
         } else if (checkTheme() == 2) {
             setTheme(R.style.orangeMode);
+        } else if (checkTheme() == 3) {
+            setTheme(R.style.BlackDay);
         }
     }
 
@@ -53,7 +55,7 @@ public class CustomiseActivity extends AppCompatActivity {
     }
 
     private void setSpinnerItem() {
-        String[] items = new String[]{"Classic Theme", "Light Leaf", "Night Pumpkin"};
+        String[] items = new String[]{"Classic Theme", "Light Leaf", "Night Pumpkin", "Black Day"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         binding.customThemeDialogId.setAdapter(adapter);
         binding.customThemeDialogId.setSelection(settings.get_theme(getApplicationContext(), "theme", "theme"));

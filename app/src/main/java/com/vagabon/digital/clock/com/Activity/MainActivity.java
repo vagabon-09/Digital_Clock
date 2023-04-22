@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //Settings class is calling
         st = new Settings();
+        /*In this function we are setting all the theme according to the users choice*/
         setCustomTheme();
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -57,13 +58,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void setCustomTheme() {
-        Log.d("checkTheme", "setCustomTheme: " + checkTheme() + "");
+//        Log.d("checkTheme", "setCustomTheme: " + checkTheme() + "");
         if (checkTheme() == 0) {
             setTheme(R.style.customMode);
         } else if (checkTheme() == 1) {
             setTheme(R.style.NightBat);
         } else if (checkTheme() == 2) {
             setTheme(R.style.orangeMode);
+        } else if (checkTheme() == 3) {
+            setTheme(R.style.BlackDay);
         }
     }
 

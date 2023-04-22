@@ -32,4 +32,10 @@
         <item name="background">@color/black</item>
     </style>
 
+    <style name="BlackDay" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="tint">@color/text_color</item>
+        <item name="background">@color/black</item>
+    </style>
+
 </resources>
