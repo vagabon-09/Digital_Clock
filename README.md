@@ -58,7 +58,7 @@ To build Clock Titan from source, you'll need to have Android Studio installed o
 
 ## License
 
-Clock Titan is released under the [MIT License](https://opensource.org/licenses/MIT).
+Clock Titan is released under the [MIT License](https://github.com/vagabon-09/Digital_Clock/blob/9c45ac5124722590bcfc9d8450ada01debee8e99/LICENSE).
 
 ## Contact
 
