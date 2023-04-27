@@ -36,10 +36,10 @@ Clock Titan is a powerful digital clock app for Android that allows you to custo
 
 
 
-<!-- ## Getting Started
+ ## Getting Started
+ 
+<a href="https://play.google.com/store/apps/details?id=com.vagabon.digital.clock.com"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" width="200"/></a>
 
-
-To use Clock Titan, simply download and install it from the Google Play Store. -->
 
 ## Contributing
 
